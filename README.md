@@ -1,8 +1,13 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This is a CodeBase for Clean Architecture for React Native using:
+ZudStand store & React-Query
+
+Maybe you like this Codebase for your next Project React Native.
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+>**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) 
+This is a CodeBase for Clean Architecture for React Native using:
+ZudStand store & React-Query
 
 ## Step 1: Start the Metro Server
 
