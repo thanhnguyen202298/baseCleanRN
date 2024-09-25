@@ -1,13 +1,12 @@
-import { create, StateCreator } from "zustand";
-import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { mmKVStorage } from "./MMStorageKV";
-import { isLoading, isOnPopup } from "..";
+import { create } from "zustand";
+import { combine, createJSONStorage, devtools, persist } from "zustand/middleware";
+import EncryptedStorage from "react-native-encrypted-storage";
 
 const devPersistMiddle = (f: (set: any) => DBState) =>
     devtools(persist(f,
         {
             name: 'DBStore',
-            storage: createJSONStorage(() => mmKVStorage)
+            storage: createJSONStorage(() => EncryptedStorage)
         }))
 
 const initConfig: Config = {
@@ -20,28 +19,31 @@ const initConfig: Config = {
 
 const defaultDBState: DBState = {
     //props
-    user: undefined,
-    data: undefined,
+    user: {},
+    dataState: {},
     permissions: new Map(),
     configs: initConfig,
     //dispachers
-    setPermissions: null,
-    setUser: null,
-    setData: null,
-    resetData: null,
-    setConfigs: undefined,
-    resetConfig: null,
+    setPermissions: (d)=>{},
+    setUser: (d)=>{},
+    setData: (d)=>{},
+    resetData: ()=>{},
+    setConfigs: (d)=>{},
+    resetConfig: ()=>{},
 }
 
 const defaultUiState: UIState = {
     isLoading: false,
     isOnPopup: false,
 
-    setIsLoading: null,
-    setIsOnPopup: null,
+    isOnline: false,
+    isAppActive: false,
+    
+    setIsLoading: (d) => { },
+    setIsOnPopup: (d) => { },
 }
 
-const useUiStore = create<UIState>()(
+export const useUiStore = create<UIState>()(
     devtools((set) => ({
         ...defaultUiState,
         setIsLoading: (isLoading) => set({ isLoading }),
@@ -49,13 +51,13 @@ const useUiStore = create<UIState>()(
     }))
 )
 
-const useDBStore = create<DBState>()(
+export const useDBStore = create<DBState>()(
     devPersistMiddle((set) => ({
         ...defaultDBState,
         setUser: (user: UserInfo) =>
             set({ user }),
-        setData: (data: any) =>
-            set({ data }),
+        setData: (dataState: any) =>
+            set({ dataState }),
 
         setPermissions: (permissions: Map<string, boolean>) =>
             set({ permissions }),
@@ -63,19 +65,10 @@ const useDBStore = create<DBState>()(
         setConfigs: (configs: Config) => set({ configs }),
 
         resetData: () =>
-            set({ data: undefined }),
+            set({ dataState: {} }),
         resetConfig: () =>
             set({ configs: initConfig }),
 
     }
     ))
 )
-
-const useStore = create<IStore>()(
-    (set) => ({
-        ...useDBStore.getState(),
-        ...useUiStore.getState()
-    })
-)
-
-export default useStore;

@@ -1,7 +1,8 @@
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 import {
+  ActivityIndicator,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -11,13 +12,14 @@ import {
   View,
 } from 'react-native';
 
-import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
+import UseCaseHookDataStore from '../domain/usecase/DataHookUseCase';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>
 
-function Section({children, title}: SectionProps): React.JSX.Element {
+function Section({ children, title }: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -44,6 +46,24 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 }
 
 export default function AppBody(): React.JSX.Element {
+
+  const {dataState, isLoading} = UseCaseHookDataStore()
+
+  return (
+    <MainContainer>
+      <Section title="Step One">
+        Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+        screen and then Test ReactQuery
+      </Section>
+      <Section title='testing api'>
+        {isLoading ? <ActivityIndicator /> :
+          dataState?.data}
+      </Section>
+    </MainContainer>
+  );
+}
+
+function MainContainer({ children }): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -64,14 +84,11 @@ export default function AppBody(): React.JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then Test ReactQuery
-          </Section>
+          {children}
         </View>
       </ScrollView>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({

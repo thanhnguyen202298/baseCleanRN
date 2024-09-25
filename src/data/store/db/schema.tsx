@@ -1,26 +1,28 @@
 interface DBState {
   //props
-  user: UserInfo | undefined;
-  data: any | undefined;
-  permissions: Map<string,boolean> | undefined;
-  configs: Config| undefined;
+  user: UserInfo | {};
+  dataState: any | {};
+  permissions: Map<string,boolean> | {};
+  configs: Config| {};
 
   //dispatchers
-  setUser: ((user: UserInfo) => void)|null,
-  setData: ((data:any)=> void)|null,
-  setPermissions: ((permissions: Map<string, boolean>)=> void)|null;
-  setConfigs: ((config:Config)=> void)|void,
+  setUser: ((user: UserInfo) => void),
+  setData: ((data:any)=> void),
+  setPermissions: ((permissions: Map<string, boolean>)=> void);
+  setConfigs: ((config:Config)=> void),
 
-  resetData: (()=>void)|null,
-  resetConfig: (()=>void)|null,
+  resetData: (()=>void),
+  resetConfig: (()=>void),
 }
 
 interface UIState {
   isLoading: boolean;
   isOnPopup: boolean;
+  isOnline: boolean;
+  isAppActive: boolean;
 
-  setIsLoading: ((isLoading:boolean)=> void)|null;
-  setIsOnPopup: ((isOnPopup: boolean)=> void)|null,
+  setIsLoading: ((isLoading:boolean)=> void);
+  setIsOnPopup: ((isOnPopup: boolean)=> void),
 }
 
 interface IStore extends UIState, DBState{}

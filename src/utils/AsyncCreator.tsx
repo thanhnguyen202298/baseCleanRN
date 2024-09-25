@@ -1,5 +1,5 @@
 
-export default async function Async<Type>(f: () => Type) {
+export default function Async<Type>(f: () => Type) {
     return new Promise<Type>((resolve, reject) => {
         try {
             resolve(f())
