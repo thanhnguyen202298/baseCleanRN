@@ -7,7 +7,7 @@ function onAppStateChange(status: AppStateStatus) {
         focusManager.setFocused(status === 'active')
     }
 }
-
+//auto refresh if window focus
 export const useWatchAppState = () => useEffect(() => {
     const subscription = AppState.addEventListener('change', onAppStateChange)
 
