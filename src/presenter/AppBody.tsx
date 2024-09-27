@@ -1,111 +1,31 @@
 
 import React from 'react';
-import type { PropsWithChildren } from 'react';
 import {
   ActivityIndicator,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
-  useColorScheme,
-  View,
 } from 'react-native';
 
-import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
 import UseCaseHookDataStore from '../domain/usecase/DataHookUseCase';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>
-
-function Section({ children, title }: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import { NavigationContainer } from '@react-navigation/native';
+import MainContainer from './component/MainContainer';
+import Section, { styles } from './component/Session';
 
 export default function AppBody(): React.JSX.Element {
 
-  const {dataState, isLoading} = UseCaseHookDataStore()
+  const { dataState, isLoading } = UseCaseHookDataStore()
 
   return (
-    <MainContainer>
-      <Section title="Step One">
-        Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-        screen and then Test ReactQuery
-      </Section>
-      <Section title='testing api'>
-        {isLoading ? <ActivityIndicator /> :
-          dataState?.data}
-      </Section>
-    </MainContainer>
+    <NavigationContainer>
+      <MainContainer>
+        <Section title="Step One">
+          Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+          screen and then Test ReactQuery
+        </Section>
+        <Section title='testing api'>
+          {isLoading ? <ActivityIndicator /> :
+            dataState?.data}
+        </Section>
+      </MainContainer>
+    </NavigationContainer>
   );
 }
-
-function MainContainer({ children }): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          {children}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  )
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});

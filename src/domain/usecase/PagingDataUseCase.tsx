@@ -1,11 +1,10 @@
-import React, { useCallback } from "react"
+import React, { useCallback, useEffect } from "react"
 import { useQuery } from "react-query"
 import { MockApi } from "../../data/api/api"
 
 export default function useApiPaging(keyFn: any, api: (page: number) => void, defaultPage = 0) {
 
     const [page, setPage] = React.useState(defaultPage)
-
     const {
         isLoading,
         isError,
@@ -17,7 +16,7 @@ export default function useApiPaging(keyFn: any, api: (page: number) => void, de
 
     const prevPage = useCallback(() => {
         setPage(old => Math.max(old - 1, 0))
-    }, [setPage])
+    }, [setPage, isPreviousData])
 
     const nextPage = useCallback(() => {
         if (!isPreviousData && data?.hasMore) { setPage(old => old + 1) }

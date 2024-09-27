@@ -1,4 +1,4 @@
-import Async, { sleep } from "../../utils/AsyncCreator"
+import Async, { sleep } from "../../core/AsyncCreator"
 
 export const MockApi = {
     async get() {

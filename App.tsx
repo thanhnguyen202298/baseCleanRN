@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppBody from './src/presenter/AppBody';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { useRunBGTest } from './src/core/BackgroundService';
 
 function App(): React.JSX.Element {
   const clientQuery = new QueryClient({
@@ -11,6 +12,8 @@ function App(): React.JSX.Element {
       },
     },
   })
+
+  useRunBGTest()
   return (
     <QueryClientProvider client={clientQuery} >
       <AppBody />

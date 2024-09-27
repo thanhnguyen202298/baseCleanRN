@@ -1888,6 +1888,19 @@
     react-is "^16.13.0"
     use-latest-callback "^0.2.1"
 
+"@react-navigation/elements@^1.3.31":
+  version "1.3.31"
+  resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-1.3.31.tgz#28dd802a0787bb03fc0e5be296daf1804dbebbcf"
+  integrity sha512-bUzP4Awlljx5RKEExw8WYtif8EuQni2glDaieYROKTnaxsu9kEIA515sXQgUDZU4Ob12VoL7+z70uO3qrlfXcQ==
+
+"@react-navigation/native-stack@^6.11.0":
+  version "6.11.0"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-6.11.0.tgz#a33f92cbd55dfe28fb0ba67df99aaa95240eb87c"
+  integrity sha512-U5EcUB9Q2NQspCFwYGGNJm0h6wBCOv7T30QjndmvlawLkNt7S7KWbpWyxS9XBHSIKF57RgWjfxuJNTgTstpXxw==
+  dependencies:
+    "@react-navigation/elements" "^1.3.31"
+    warn-once "^0.1.0"
+
 "@react-navigation/native@^6.1.18":
   version "6.1.18"
   resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-6.1.18.tgz#338fa9afa2c89feec1d3eac41c963840d8d6f106"
@@ -3651,6 +3664,11 @@ event-target-shim@^5.0.0, event-target-shim@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
   integrity sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
+
+eventemitter3@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
+  integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
 
 execa@^0.7.0:
   version "0.7.0"
@@ -6239,7 +6257,15 @@ rc@^1.0.1, rc@^1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-devtools-core@5.3.1, react-devtools-core@^4.27.7, react-devtools-core@~4.28.0:
+react-devtools-core@5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-5.3.1.tgz#d57f5b8f74f16e622bd6a7bc270161e4ba162666"
+  integrity sha512-7FSb9meX0btdBQLwdFOwt6bGqvRPabmVMMslv8fgoSPqXyuGpgQe36kx8gR86XPw7aV1yVouTp6fyZ0EH+NfUw==
+  dependencies:
+    shell-quote "^1.6.1"
+    ws "^7"
+
+react-devtools-core@^4.27.7:
   version "4.28.5"
   resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-4.28.5.tgz#c8442b91f068cdf0c899c543907f7f27d79c2508"
   integrity sha512-cq/o30z9W2Wb4rzBefjv5fBalHU0rJGZCHAkf/RHSBWSSYwh8PlQTqqOJmgIIbBtpj27T6FIPXeomIjZtCNVqA==
@@ -6259,6 +6285,11 @@ react-devtools@^5.3.1:
     react-devtools-core "5.3.1"
     update-notifier "^2.1.0"
 
+react-freeze@^1.0.0:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-freeze/-/react-freeze-1.0.4.tgz#cbbea2762b0368b05cbe407ddc9d518c57c6f3ad"
+  integrity sha512-r4F0Sec0BLxWicc7HEyo2x3/2icUTrRmDjaaRyzzn+7aDyFZliszMDOgLVwSnQnYENOlL1o569Ze2HZefk8clA==
+
 "react-is@^16.12.0 || ^17.0.0 || ^18.0.0", react-is@^18.0.0, react-is@^18.2.0:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
@@ -6274,10 +6305,30 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-background-actions@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-background-actions/-/react-native-background-actions-4.0.1.tgz#51fab1df75fb69428c059929284d2ab3b5ff673b"
+  integrity sha512-LADhnb4ag1oH5Lotq0j8K9e2cFmrafFyg2PCME88VkTjqDUgNcJonkNdMCTHN0N3fh+hwAA7nDR4Cxkj9Q8eCw==
+  dependencies:
+    eventemitter3 "^4.0.7"
+
 react-native-encrypted-storage@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/react-native-encrypted-storage/-/react-native-encrypted-storage-4.0.3.tgz#2a4d65459870511e8f4ccd22f02433dab7fa5e91"
   integrity sha512-0pJA4Aj2S1PIJEbU7pN/Qvf7JIJx3hFywx+i+bLHtgK0/6Zryf1V2xVsWcrD50dfiu3jY1eN2gesQ5osGxE7jA==
+
+react-native-safe-area-context@^4.11.0:
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.11.0.tgz#d45271363672dc1923ddb0ce5a6ad588e210c85d"
+  integrity sha512-Bg7bozxEB+ZS+H3tVYs5yY1cvxNXgR6nRQwpSMkYR9IN5CbxohLnSprrOPG/ostTCd4F6iCk0c51pExEhifSKQ==
+
+react-native-screens@^3.34.0:
+  version "3.34.0"
+  resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-3.34.0.tgz#1291a460c5bc59e2ba581b42d40fa9a58d3b1197"
+  integrity sha512-8ri3Pd9QcpfXnVckOe/Lnto+BXmSPHV/Q0RB0XW0gDKsCv5wi5k7ez7g1SzgiYHl29MSdiqgjH30zUyOOowOaw==
+  dependencies:
+    react-freeze "^1.0.0"
+    warn-once "^0.1.0"
 
 react-native@0.73.9:
   version "0.73.9"
@@ -7414,6 +7465,11 @@ walker@^1.0.7, walker@^1.0.8:
   integrity sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==
   dependencies:
     makeerror "1.0.12"
+
+warn-once@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/warn-once/-/warn-once-0.1.1.tgz#952088f4fb56896e73fd4e6a3767272a3fccce43"
+  integrity sha512-VkQZJbO8zVImzYFteBXvBOZEl1qL175WH8VmZcxF2fZAoudNhNDvHi+doCaAEdU2l2vtcIwa2zn0QK5+I1HQ3Q==
 
 wcwidth@^1.0.1:
   version "1.0.1"
