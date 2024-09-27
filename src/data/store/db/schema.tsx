@@ -5,6 +5,8 @@ interface DBState {
   permissions: Map<string,boolean> | {};
   configs: Config| {};
 
+  taskRunning: string[];
+
   //dispatchers
   setUser: ((user: UserInfo) => void),
   setData: ((data:any)=> void),
@@ -13,6 +15,7 @@ interface DBState {
 
   resetData: (()=>void),
   resetConfig: (()=>void),
+  setTaskRunning: ((d: string[])=>void)
 }
 
 interface UIState {

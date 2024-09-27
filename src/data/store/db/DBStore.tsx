@@ -23,6 +23,7 @@ const defaultDBState: DBState = {
     dataState: {},
     permissions: new Map(),
     configs: initConfig,
+    taskRunning: [],
     //dispachers
     setPermissions: (d)=>{},
     setUser: (d)=>{},
@@ -30,6 +31,7 @@ const defaultDBState: DBState = {
     resetData: ()=>{},
     setConfigs: (d)=>{},
     resetConfig: ()=>{},
+    setTaskRunning: (d)=>{}
 }
 
 const defaultUiState: UIState = {
@@ -38,6 +40,7 @@ const defaultUiState: UIState = {
 
     isOnline: false,
     isAppActive: false,
+
     
     setIsLoading: (d) => { },
     setIsOnPopup: (d) => { },
@@ -69,6 +72,7 @@ export const useDBStore = create<DBState>()(
         resetConfig: () =>
             set({ configs: initConfig }),
 
+        setTaskRunning: (taskRunning: string[])=>set({taskRunning})
     }
     ))
 )

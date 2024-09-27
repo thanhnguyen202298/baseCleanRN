@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import BackgroundService from 'react-native-background-actions';
 import { sleep } from './AsyncCreator';
+import useDBStore from '../data/store';
+import moment from 'moment';
 
 const jobOptions = {
     taskName: 'job name',
@@ -17,19 +19,28 @@ const jobOptions = {
     },
 };
 
-export default async function startAJobBackground(jobFunc: () => any, options: any = jobOptions) {
+async function startAJobBackground(jobFunc: () => any, options: any = jobOptions) {
     await BackgroundService.start(jobFunc, options)
     //create notification for android 12 upto
     await BackgroundService.updateNotification({ taskDesc: options.taskDesc })
 }
 
 export function useRunBGTest() {
+    
+    const { taskRunning, setTaskRunning } = useDBStore();
+    const { taskName }= jobOptions;
+    if(taskRunning.includes(taskName))return;
+
+    const newTask = taskRunning.concat([taskName])
+    setTaskRunning(newTask)
+
     return useEffect(() => {
         startAJobBackground(async () => {
             while (true) {
                 await sleep(200)
-                console.log("Iam in background")
+                console.log(`fetch in background ${Date.now()}`)
             }
+
         })
     }, [])
 }
